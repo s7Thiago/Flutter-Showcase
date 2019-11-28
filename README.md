@@ -9,6 +9,6 @@ Food App Design
 </th>
 </tr>
 
-<tr><img src="https://github.com/s7Thiago/Flutter-Showcase/blob/master/assets/images/food_app/food_app_design_preview_base.png?raw=true" </img></tr>
+<tr><td <img src="https://github.com/s7Thiago/Flutter-Showcase/blob/master/assets/images/food_app/food_app_design_preview_base.png?raw=true" </img></tr></td>
 
 </table>
