@@ -15,6 +15,14 @@ class FirewatchParallaxMain extends StatelessWidget {
 class FirewatchParallaxHome extends StatefulWidget {
   @override
   _FirewatchParallaxHomeState createState() => _FirewatchParallaxHomeState();
+
+//* acess the landscapeModeOnly() function
+  void takeLandscapeModeOnly() =>
+      _FirewatchParallaxHomeState().landscapeModeOnly();
+
+  //* acess the portraitModeOnly() function
+  void takePortraitModeOnly() =>
+      _FirewatchParallaxHomeState().portraitModeOnly();
 }
 
 class _FirewatchParallaxHomeState extends State<FirewatchParallaxHome>
@@ -35,23 +43,23 @@ class _FirewatchParallaxHomeState extends State<FirewatchParallaxHome>
   @override
   void initState() {
     super.initState();
-    _landscapeModeOnly();
+    landscapeModeOnly();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _portraitModeOnly();
+    portraitModeOnly();
   }
 
-  void _landscapeModeOnly() {
+  void landscapeModeOnly() {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
   }
 
-  void _portraitModeOnly() {
+  void portraitModeOnly() {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
