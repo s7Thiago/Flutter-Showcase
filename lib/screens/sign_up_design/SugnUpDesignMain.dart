@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_showcase/screens/sign_up_design/Field.dart';
+import 'package:my_flutter_showcase/screens/sign_up_design/form_clipper.dart';
 
 class SignUpDesignMain extends StatelessWidget {
   @override
@@ -8,6 +9,7 @@ class SignUpDesignMain extends StatelessWidget {
   }
 }
 
+// * This widget gathers all of the structure of screen
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,32 +20,53 @@ class Home extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xffF3F8FB),
       ),
       home: Scaffold(
-        body: Form(),
-        resizeToAvoidBottomInset: false,
+        body: FormDecorated(),
+        resizeToAvoidBottomInset:
+            false, // ! The line prevents others widgets resizing when the keyboard is opened
       ),
     );
   }
 }
 
-class Form extends StatelessWidget {
+// * Here, the Main form is cut to look like the model picture
+class FormDecorated extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: Alignment.center,
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(top: 50),
-          child: Align(
-            alignment: Alignment.topRight,
-            child: Header(),
+        Container(
+          color: Color(0xff0A5AD6),
+          width: double.infinity,
+          height: double.infinity,
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: ClipPath(
+            clipper: selectClipper(
+              context,
+              smallScreenHeightClipper: FormClipperSmall(),
+              largeScreenHeightClipper: FormClipperLarge(),
+            ),
+            child: Container(
+              color: Colors.blue,
+
+              // ! choosing the height of the light blue wave according the screen size
+              height: ((MediaQuery.of(context).size.height) < 700
+                  ? MediaQuery.of(context).size.height * 0.92
+                  : MediaQuery.of(context).size.height * 0.889),
+              width: double.infinity,
+            ),
           ),
         ),
-        FormFields(),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 50),
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Footer(),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: ClipPath(
+            clipper: selectClipper(
+              context,
+              smallScreenHeightClipper: FormClipperSmall(),
+              largeScreenHeightClipper: FormClipperLarge(),
+            ),
+            child: Form(),
           ),
         ),
       ],
@@ -51,14 +74,54 @@ class Form extends StatelessWidget {
   }
 }
 
+// * Here, contains the high level structure of the form (Header, Form Fields, and Footer)
+class Form extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+
+      // ! Choosing the form height accordging the screen size
+      height: (MediaQuery.of(context).size.height < 700
+          ? MediaQuery.of(context).size.height * 0.87
+          : MediaQuery.of(context).size.height * 0.86),
+      width: double.infinity,
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 100, right: 50),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: Header(),
+              ),
+            ),
+          ),
+          FormFields(),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Footer(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// * Here are the low level structure of the form fields
 class FormFields extends StatelessWidget {
-  //* Controllers for form fields
+  // * Controllers for form fields
   var userNameController = TextEditingController();
   var fullNameController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
 
-  //*focus nodes of form fields
+  // * focus nodes of form fields
   final FocusNode usernameNode = FocusNode();
   final FocusNode fullNameNode = FocusNode();
   final FocusNode emailNode = FocusNode();
@@ -128,6 +191,7 @@ class FormFields extends StatelessWidget {
   }
 }
 
+// * The Footer Contains the checkbox, the Terms & Conditions Text, the Sign up Button and the text bellow of the Sign in button
 class Footer extends StatefulWidget {
   @override
   _FooterState createState() => _FooterState();
@@ -148,6 +212,7 @@ class _FooterState extends State<Footer> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
+        // * The Row bellow represents the Terms text and checkbox
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -175,9 +240,13 @@ class _FooterState extends State<Footer> {
             )
           ],
         ),
+
+        // * Defines an distance between the Sign in button and the Row above
         SizedBox(
-          height: 100,
+          height: MediaQuery.of(context).size.height * 0.015,
         ),
+
+        // * Sign in button
         CustomButton(
           content: "Sign up",
         ),
@@ -190,6 +259,7 @@ class _FooterState extends State<Footer> {
   }
 }
 
+// * The header contains the Sign up, and Sugn in navigation texts options
 class Header extends StatefulWidget {
   @override
   _HeaderState createState() => _HeaderState();
@@ -201,11 +271,15 @@ class _HeaderState extends State<Header> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
-        Text(
-          "Sign up",
-          style: TextStyle(
-            fontWeight: FontWeight.w900,
-            color: Color(0xff0A58D2),
+        Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Text(
+            "Sign up",
+            style: TextStyle(
+              fontWeight: FontWeight.w900,
+              color: Color(0xff0A58D2),
+              fontSize: 20,
+            ),
           ),
         ),
         Text(
@@ -214,6 +288,7 @@ class _HeaderState extends State<Header> {
               color: Color(
                 0xff68A8D3,
               ),
+              fontSize: 20,
               fontWeight: FontWeight.bold),
         ),
       ],
@@ -221,6 +296,7 @@ class _HeaderState extends State<Header> {
   }
 }
 
+// Here are the base implementation of the Sign in Button
 class CustomButton extends StatefulWidget {
   final String content;
 
@@ -259,7 +335,7 @@ class _CustomButtonState extends State<CustomButton> {
         },
         enableFeedback: true,
         child: Container(
-          width: 120,
+          width: 160,
           height: 42,
           child: Center(
               child: Text(
@@ -272,3 +348,10 @@ class _CustomButtonState extends State<CustomButton> {
     );
   }
 }
+
+CustomClipper<Path> selectClipper(BuildContext context,
+        {CustomClipper<Path> smallScreenHeightClipper,
+        CustomClipper<Path> largeScreenHeightClipper}) =>
+    MediaQuery.of(context).size.height < 700
+        ? smallScreenHeightClipper
+        : largeScreenHeightClipper;

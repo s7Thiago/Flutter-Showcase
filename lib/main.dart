@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:my_flutter_showcase/screens/MainComponents.dart';
 import 'package:my_flutter_showcase/screens/SamplesList.dart';
 import 'package:my_flutter_showcase/screens/ScreenItem.dart';
 import 'package:my_flutter_showcase/screens/animation_example/SimpleAnimationExample.dart';
@@ -21,7 +20,7 @@ main(List<String> args) {
 }
 
 // ! The lines above are just a test
-class MainApp extends StatefulWidget with mainComponents.MainComponents{
+class MainApp extends StatefulWidget with mainComponents.MainComponents {
   @override
   _MainAppState createState() => _MainAppState();
 }
