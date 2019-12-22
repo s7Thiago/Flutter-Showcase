@@ -13,6 +13,8 @@ import 'screens/MainComponents.dart' as mainComponents;
 import 'screens/firewatch_parallax/firewatch_parallax_main.dart';
 
 main(List<String> args) {
+  WidgetsFlutterBinding.ensureInitialized();
+
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(MainApp());
