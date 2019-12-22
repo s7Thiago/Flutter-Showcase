@@ -74,7 +74,7 @@ class _FirewatchParallaxHomeState extends State<FirewatchParallaxHome>
       // app is inactive
     } else if (state == AppLifecycleState.paused) {
       // user is about quit our app temporally
-    } else if (state == AppLifecycleState.suspending) {
+    } else if (state == AppLifecycleState.detached) {
       // app suspended (not used in iOS)
     }
   }
