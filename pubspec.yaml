@@ -57,6 +57,7 @@ flutter:
     - assets/images/firewatch_parallax/parallax6.png
     - assets/images/firewatch_parallax/parallax7.png
     - assets/images/firewatch_parallax/parallax8.png
+    - assets/images/trip_planner_design/trip_planner_design.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
