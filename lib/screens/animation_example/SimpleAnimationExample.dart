@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_showcase/screens/SamplesList.dart';
 import 'package:my_flutter_showcase/screens/ScreenItem.dart';
-import 'package:my_flutter_showcase/screens/animation_example/AnimationExample1.dart';
-import 'package:my_flutter_showcase/screens/animation_example/AnimationExample2.dart';
+import 'package:my_flutter_showcase/screens/animation_example/sample_1/AnimationExample1.dart';
+import 'package:my_flutter_showcase/screens/animation_example/sample_2/AnimationExample2.dart';
 
 class SimpleAnimationExample extends StatelessWidget {
   @override

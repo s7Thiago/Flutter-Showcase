@@ -65,7 +65,7 @@ class _SamplesListState extends State<SamplesList>
         DeviceOrientation.portraitDown,
         DeviceOrientation.portraitUp,
       ]).then((_) {
-        print("\n\nO novo metodo foi chamado\n\n");
+        // print("\n\nO novo metodo foi chamado\n\n");
       });
     });
   }
