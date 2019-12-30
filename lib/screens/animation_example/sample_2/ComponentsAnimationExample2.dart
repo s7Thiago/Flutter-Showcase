@@ -34,14 +34,19 @@ class AnimationExample2Components {
         ));
   }
 
-  Widget buttonSignIn(
-      {bool isLoading = false,
-      double circular = 8.0,
-      double width = double.infinity,
-      double height = 50,
-      Function onTap,
-      EdgeInsets padding = const EdgeInsets.only(
-          right: 30.0, left: 30.0, top: 70, bottom: 60)}) {
+  Widget buttonSignIn({
+    bool isLoading = false,
+    double circular = 8.0,
+    double width = double.infinity,
+    double height = 50,
+    Function onTap,
+    EdgeInsets padding = const EdgeInsets.only(
+      right: 30.0,
+      left: 30.0,
+      top: 70,
+      bottom: 60,
+    ),
+  }) {
     _loading() {
       return Padding(
         padding: const EdgeInsets.all(8.0),
@@ -68,7 +73,7 @@ class AnimationExample2Components {
             height: height,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(circular),
-              color: Colors.red,
+              color: isLoading ? Colors.black : Colors.red,
             ),
             alignment: Alignment.center,
             child: isLoading ? _loading() : _text()),
