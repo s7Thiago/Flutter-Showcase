@@ -52,6 +52,7 @@ class _FirewatchParallaxHomeState extends State<FirewatchParallaxHome>
     portraitModeOnly();
   }
 
+
   void landscapeModeOnly() {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
