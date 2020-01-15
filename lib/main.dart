@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_flutter_showcase/screens/SamplesList.dart';
 import 'package:my_flutter_showcase/screens/ScreenItem.dart';
-import 'package:my_flutter_showcase/screens/animation_example/SimpleAnimationExample.dart';
+import 'package:my_flutter_showcase/screens/animation_example/animation_examples.dart';
 import 'package:my_flutter_showcase/screens/cards_app_design/cards_app_design_main.dart';
 import 'package:my_flutter_showcase/screens/food_app_design/food_main.dart';
 import 'package:my_flutter_showcase/screens/parallax_example/HomeSimpleParallax.dart';
@@ -51,7 +51,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return SamplesList(
-      itens: <Widget>[
+      itens: <ScreenItem>[
         ScreenItem(
             representationIcon: Icons.bubble_chart,
             title: "Food App Design",
@@ -77,7 +77,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
           representationIcon: Icons.ac_unit,
           title: "Animation Samples",
           description: "Samples of animations on Flutter",
-          destination: SimpleAnimationExample(),
+          destination: AnimationExamplesMain(),
         ),
         ScreenItem(
           representationIcon: Icons.person,
@@ -91,8 +91,8 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
           description: "A example of parallax effect in flutter",
           destination: FirewatchParallaxHome(),
         ),
+
       ],
     );
   }
 }
-// ! The lines up are just a test

@@ -14,6 +14,9 @@ class _AnimationExample2State extends State<AnimationExample2>
   Animation<double> animOpacityForgetPasswordText;
   Animation<double> animButtonSignInCircular;
   Animation<double> animButtonSignInWidth;
+  Animation<double> animTransformLogo;
+
+  bool isAnimated = false;
 
   @override
   void initState() {
@@ -21,7 +24,7 @@ class _AnimationExample2State extends State<AnimationExample2>
 
     // Instanciando o controller da animação
     animController = AnimationController(
-      duration: Duration(milliseconds: 2000),
+      duration: Duration(milliseconds: 1500),
       vsync: this,
     );
   }
@@ -64,6 +67,11 @@ class _AnimationExample2State extends State<AnimationExample2>
       parent: animController,
       curve: Interval(0, 0.4, curve: Curves.easeInOutCirc),
     ));
+
+    // Animação da logo
+    animTransformLogo = Tween<double>(begin: 2, end: 0).animate(CurvedAnimation(
+        parent: animController,
+        curve: Interval(0.45, 0.85, curve: Curves.easeInCubic)));
   }
 
   @override
@@ -73,6 +81,10 @@ class _AnimationExample2State extends State<AnimationExample2>
   }
 
   _signInOnTap() {
+    setState(() {
+      this.isAnimated = !isAnimated;
+    });
+
     if (animController.value > 0) {
       animController.reverse();
     } else {
@@ -83,7 +95,16 @@ class _AnimationExample2State extends State<AnimationExample2>
   Widget _column() {
     return Column(
       children: <Widget>[
-        logo(),
+        AnimatedBuilder(
+          animation: animTransformLogo,
+          child: logo(),
+          builder: (BuildContext context, Widget child) {
+            return Transform.scale(
+              scale: animTransformLogo.value,
+              child: child,
+            );
+          },
+        ),
         AnimatedBuilder(
           animation: animTransformUsernameField,
           child: inputUserName(),
@@ -123,7 +144,8 @@ class _AnimationExample2State extends State<AnimationExample2>
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Stack(
-          alignment: Alignment.bottomCenter,
+          alignment:
+              isAnimated ? Alignment.bottomCenter : Alignment.bottomCenter,
           children: <Widget>[
             _column(),
             AnimatedBuilder(

@@ -6,6 +6,7 @@ import 'package:my_flutter_showcase/screens/cards_app_design/Dot.dart';
 import 'package:my_flutter_showcase/screens/cards_app_design/MyCard.dart';
 import 'package:my_flutter_showcase/screens/cards_app_design/Space.dart';
 
+// ignore: must_be_immutable
 class CardsAppDesignHomePage extends StatelessWidget {
   double dotSize = 6;
   double spaceHeight = 7;

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_flutter_showcase/screens/ScreenItem.dart';
 
 import 'MainComponents.dart';
 
 class SamplesList extends StatefulWidget {
-  final List<Widget> itens;
+  final List<ScreenItem> itens;
   final String listTitle;
 
   const SamplesList({

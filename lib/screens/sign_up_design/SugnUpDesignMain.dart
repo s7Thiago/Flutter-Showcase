@@ -114,6 +114,7 @@ class Form extends StatelessWidget {
 }
 
 // * Here are the low level structure of the form fields
+// ignore: must_be_immutable
 class FormFields extends StatelessWidget {
   // * Controllers for form fields
   var userNameController = TextEditingController();

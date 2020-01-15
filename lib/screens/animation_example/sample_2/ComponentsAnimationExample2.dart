@@ -64,19 +64,23 @@ class AnimationExample2Components {
       );
     }
 
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: padding,
-        child: Container(
-            width: width,
-            height: height,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(circular),
-              color: isLoading ? Colors.black : Colors.red,
-            ),
-            alignment: Alignment.center,
-            child: isLoading ? _loading() : _text()),
+    return Material(
+      borderOnForeground: false,
+      borderRadius: BorderRadius.circular(circular),
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: padding,
+          child: Container(
+              width: width,
+              height: height,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(circular),
+                color: isLoading ? Colors.redAccent : Colors.red,
+              ),
+              alignment: Alignment.center,
+              child: isLoading ? _loading() : _text()),
+        ),
       ),
     );
   }
