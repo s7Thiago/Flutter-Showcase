@@ -17,7 +17,7 @@ class PagesAppAnimation extends StatefulWidget {
 }
 
 class _PagesAppAnimationState extends State<PagesAppAnimation> {
-  PageController pageController;
+  PageController pageController = PageController();
   List<String> pageTitles = [
     'Home',
     'Feed',
@@ -81,12 +81,19 @@ class _PagesAppAnimationState extends State<PagesAppAnimation> {
         physics: BouncingScrollPhysics(),
         itemBuilder: (context, page) {
           return Center(
-            child: Text(
-              pageTitles[page],
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                  color: Theme.of(context).accentColor),
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: 600),
+              curve: Curves.easeInOutBack,
+              // color: Colors.greenAccent,
+              child: Center(
+                child: Text(
+                  pageTitles[page],
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Theme.of(context).accentColor),
+                ),
+              ),
             ),
           );
         },
@@ -94,7 +101,9 @@ class _PagesAppAnimationState extends State<PagesAppAnimation> {
 
       // Bottom App Bar
       bottomNavigationBar: AnimatedBuilder(
-        animation: pageController,
+        animation: pageController != null
+            ? pageController
+            : PageController(initialPage: 0),
         builder: (BuildContext context, Widget child) {
           return BottomNavigationBar(
             type: BottomNavigationBarType.fixed,

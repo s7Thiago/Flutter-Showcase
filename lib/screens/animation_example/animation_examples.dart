@@ -4,6 +4,7 @@ import 'package:my_flutter_showcase/screens/ScreenItem.dart';
 import 'package:my_flutter_showcase/screens/animation_example/sample_1/AnimationExample1.dart';
 import 'package:my_flutter_showcase/screens/animation_example/sample_2/AnimationExample2.dart';
 import 'package:my_flutter_showcase/screens/animation_example/sample_3/pageview_and_bottom_navigation_view_animation_example.dart';
+import 'package:my_flutter_showcase/screens/animation_example/sample_4/page_animation.dart';
 
 import 'flare_examples/flare_examples_main.dart';
 
@@ -35,8 +36,15 @@ class AnimationExamplesMain extends StatelessWidget {
         ScreenItem(
           representationIcon: Icons.chrome_reader_mode,
           title: 'PageView and Bottom navigation view',
-          description: 'Examples of integration between the animation controllers on PageView and Bottom Navigation View',
+          description:
+              'Examples of integration between the animation controllers on PageView and Bottom Navigation View',
           destination: PageViewAndBottomNavigationViewAnimationExample(),
+        ),
+        ScreenItem(
+          representationIcon: Icons.aspect_ratio,
+          title: 'PageView animation',
+          description: 'Examples of animation of pages on PageView',
+          destination: PageAnimation(),
         ),
       ],
     );
