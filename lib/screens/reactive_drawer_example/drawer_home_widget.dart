@@ -18,24 +18,26 @@ class _ReactiveDrawerHomeWidgetState extends State<ReactiveDrawerHomeWidget> {
     DrawerAccountPage(),
   ];
 
-  int currentPage = 0;
+  PageController drawerPageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
-      appBar: AppBar(
-        title: Text('Navegação'),
-      ),
-      drawer: CustomDrawer(
-        onPressed: (index) {
-          scaffoldKey.currentState.openEndDrawer();
-          setState(() {
-            currentPage = index;
-          });
-        },
-      ),
-      body: pages[currentPage],
-    );
+        key: scaffoldKey,
+        appBar: AppBar(
+          title: Text('Navegação'),
+        ),
+        drawer: CustomDrawer(
+          onPressed: (index) {
+            scaffoldKey.currentState.openEndDrawer();
+            drawerPageController.jumpToPage(index);
+          },
+          pageController: drawerPageController,
+        ),
+        body: PageView(
+          physics: NeverScrollableScrollPhysics(),
+          controller: drawerPageController,
+          children: pages,
+        ));
   }
 }
