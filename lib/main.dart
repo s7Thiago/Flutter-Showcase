@@ -7,6 +7,7 @@ import 'package:my_flutter_showcase/screens/cards_app_design/cards_app_design_ma
 import 'package:my_flutter_showcase/screens/food_app_design/food_main.dart';
 import 'package:my_flutter_showcase/screens/parallax_example/HomeSimpleParallax.dart';
 import 'package:my_flutter_showcase/screens/plant_app_design/plant_app_design.dart';
+import 'package:my_flutter_showcase/screens/reactive_drawer_example/drawer_home_widget.dart';
 import 'package:my_flutter_showcase/screens/sign_up_design/SugnUpDesignMain.dart';
 
 import 'screens/MainComponents.dart' as mainComponents;
@@ -91,7 +92,13 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
           description: "A example of parallax effect in flutter",
           destination: FirewatchParallaxHome(),
         ),
-
+        ScreenItem(
+          representationIcon: Icons.blur_linear,
+          title: "Reactive Drawer Example",
+          description:
+              "A example of Drawer navigation using RxDart and Streams",
+          destination: ReactiveDrawerHomeWidget(),
+        ),
       ],
     );
   }
