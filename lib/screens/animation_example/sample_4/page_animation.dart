@@ -49,11 +49,14 @@ class _PageAnimationState extends State<PageAnimation> {
   @override
   void initState() {
     super.initState();
+
+    print('init state');
     _controller.addListener(() {
       int next = _controller.page.round();
       if (currentPage != next) {
         setState(() {
           currentPage = next;
+          print('current page: $currentPage');
         });
       }
     });
@@ -68,7 +71,7 @@ class _PageAnimationState extends State<PageAnimation> {
     Widget _buildAnimatedCard(bool mode, List<String> images) {
       return mode
           ? AnimatedContainer(
-              duration: Duration(milliseconds: 700),
+              duration: Duration(milliseconds: 650),
               curve: Curves.easeInOutQuint,
               margin: EdgeInsets.only(top: top, bottom: 50, right: 30),
               decoration: BoxDecoration(
@@ -89,7 +92,7 @@ class _PageAnimationState extends State<PageAnimation> {
               )),
             )
           : AnimatedContainer(
-              duration: Duration(milliseconds: 1000),
+              duration: Duration(milliseconds: 800),
               curve: Curves.easeInOutQuint,
               margin: EdgeInsets.only(top: top, bottom: 600, right: 30),
               decoration: BoxDecoration(
